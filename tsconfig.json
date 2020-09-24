@@ -3,8 +3,8 @@
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
@@ -12,7 +12,9 @@
     "baseUrl": "./",
     "incremental": true,
     "paths": {
-      "@app/config/*": ["src/app/config/*"]
+      "@app/*": ["src/app/*"],
+      "@global/helpers/*": ["src/helpers/*"],
+      "@database/*": ["src/database/*"]
     }
   }
 }

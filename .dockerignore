@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log
+.gitlab
+coverage
+.prettierrc.js
+docker-compose.yml
+jest.config.js
+package-lock.json
+README.md
+tslint.json
+tsconfig.json
+jest.setup.js
+.gitignore
+src
+docs
