@@ -1,7 +1,7 @@
 import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import Database from '@app/config/database';
 import { HeaderMiddleware } from '@app/middleware/header.middleware';
-
+import locales from '@app/i18n/translation';
 /**
  * Import Controllers
  */
@@ -20,7 +20,7 @@ import { CheckEmailService } from './services/check-email.service';
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(HeaderMiddleware)
+      .apply(HeaderMiddleware, locales)
       .forRoutes({ path: '*', method: RequestMethod.ALL });
   }
 }

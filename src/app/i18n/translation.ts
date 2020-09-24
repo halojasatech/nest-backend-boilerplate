@@ -5,6 +5,7 @@ class Translation {
   constructor() {
     i18n.configure({
       locales: ['en'],
+      header: 'accept-language',
       directory: path.join(__dirname, '../locales'),
       updateFiles: false,
     });
