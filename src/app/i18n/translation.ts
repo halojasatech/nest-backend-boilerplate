@@ -1,27 +1,21 @@
-import { Request, Response } from 'express';
-import { NextFunction } from 'connect';
-import i18next from 'i18next'
+import path from 'path';
+import i18n from 'i18n';
 
 class Translation {
-	constructor(){
-		i18next.init({
-			lng: 'en',
-			debug: false,
-			resources: {
-				en: {
-					translation: {
-						"invalid_header": `Invalid header. please try again`
-					}
-				}
-			}
-		})
-	}
+  constructor() {
+    i18n.configure({
+      locales: ['en'],
+      directory: path.join(__dirname, '../locales'),
+      updateFiles: false,
+    });
+  }
 
-	lang(lang: string){
-		return i18next.t(lang)
-	}
+  locales(lang: string) {
+    i18n.setLocale('en');
+    return i18n.__(lang);
+  }
 }
 
-const translation = new Translation()
+const translation = new Translation();
 
-export default translation.lang
+export default translation.locales;

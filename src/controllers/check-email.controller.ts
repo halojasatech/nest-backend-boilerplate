@@ -1,5 +1,5 @@
 import { Controller, Post } from '@nestjs/common';
-import { CheckEmailService } from '../../services/api/check-email.service';
+import { CheckEmailService } from '../services/check-email.service';
 
 @Controller()
 export class AuthController {

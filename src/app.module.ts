@@ -1,10 +1,26 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import Database from '@app/config/database';
+import { HeaderMiddleware } from '@app/middleware/header.middleware';
 
-import { AuthenticationModule } from './modules/authentication/authentication.module';
-import { UsersModule } from './modules/users/users.module';
+/**
+ * Import Controllers
+ */
+import { AuthController } from './controllers/check-email.controller';
+
+/**
+ * Import Services
+ */
+import { CheckEmailService } from './services/check-email.service';
 
 @Module({
-  imports: [Database, AuthenticationModule, UsersModule],
+  imports: [Database],
+  controllers: [AuthController],
+  providers: [CheckEmailService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(HeaderMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}

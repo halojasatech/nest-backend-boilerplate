@@ -1,7 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { NextFunction } from 'connect';
-import * as Joi from 'joi';
+import Joi from 'joi';
 
 import { ForbiddenException } from '@global/helpers/exception/httpException.helper';
 
@@ -17,7 +17,12 @@ export class HeaderMiddleware implements NestMiddleware {
       .validateAsync(req.headers)
       .then(() => next())
       .catch(error =>
-        next(new ForbiddenException('INVALID_HEADERS', 400)),
+        next(
+          new ForbiddenException('INVALID_HEADERS', {
+            msg: 'INVALID_HEADERS',
+            var: 1,
+          }),
+        ),
       );
   }
 }
