@@ -6,6 +6,8 @@ import { ForbiddenException } from '@app/exceptions/httpException';
 export class CheckEmailService {
   constructor(private sequelize: Sequelize) {}
   getHello(): string {
-    throw new ForbiddenException('INVALID_HEADERS', { msg: 'HELLO_WORLD' })
+    throw new ForbiddenException('INVALID_HEADERS', { msg: 'HELLO_WORLD', str: {
+      name: 'MARCUS'
+    } })
   }
 }

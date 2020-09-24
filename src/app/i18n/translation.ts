@@ -11,8 +11,8 @@ class Translation {
     });
   }
 
-  locales(lang: string) {
-    return i18n.__(lang);
+  locales(lang: string, str: string) {
+    return i18n.__(lang, str);
   }
 }
 

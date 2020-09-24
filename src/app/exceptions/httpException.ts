@@ -1,7 +1,6 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 import locales from '@app/i18n/translation';
 
-
 export class ForbiddenException extends HttpException {
   constructor(flag: string, message?: any) {
     super(
@@ -11,7 +10,7 @@ export class ForbiddenException extends HttpException {
           flag: flag,
           ...(message.joiError
             ? { errors: message.joiError.details }
-            : { message: locales(message.msg) }),
+            : { message: locales(message.msg, message.str) }),
         },
       },
       HttpStatus.FORBIDDEN,
