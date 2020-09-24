@@ -1,11 +1,10 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 import i18n from 'i18n';
 import Joi from 'joi';
 
 import { ForbiddenException } from '@app/exceptions/httpException';
 
-@Injectable()
 export class HeaderMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     Joi.object({

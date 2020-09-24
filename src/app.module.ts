@@ -1,5 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
-import { Module, MiddlewareConsumer, RequestMethod, DynamicModule, ExecutionContext } from '@nestjs/common';
+import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import Database from '@app/config/database';
 import { HeaderMiddleware } from '@app/middleware/header.middleware';
 
