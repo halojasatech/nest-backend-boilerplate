@@ -1,10 +1,9 @@
 {
-  "name": "teraswork-backend",
-  "version": "0.0.1",
-  "description": "",
+  "name": "halojasa-nest-backend",
+  "version": "1.0.1",
+  "description": "Halojasa Nest Backend Boilerplate",
   "author": "",
   "private": true,
-  "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -19,7 +18,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./__test__/jest-e2e.json",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "release:minor": "npx standard-version -- --release-as minor",
+    "release:major": "npx standard-version -- --release-as major"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
@@ -54,6 +55,7 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "faker": "^5.1.0",
+    "husky": "^4.3.0",
     "jest": "26.4.2",
     "prettier": "^1.19.1",
     "supertest": "^4.0.2",
@@ -82,6 +84,11 @@
     ],
     "moduleNameMapper": {
       "@app/*": "<rootDir>/src/app/*"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
     }
   }
 }
