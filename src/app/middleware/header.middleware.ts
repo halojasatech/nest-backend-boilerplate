@@ -1,5 +1,6 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
+import i18n from 'i18n';
 import Joi from 'joi';
 
 import { ForbiddenException } from '@app/exceptions/httpException';
@@ -14,7 +15,10 @@ export class HeaderMiddleware implements NestMiddleware {
     })
       .unknown()
       .validateAsync(req.headers)
-      .then(() => next())
+      .then(() => {
+        i18n.setLocale(req.header('accept-language'))
+        next()
+      })
       .catch(error =>
         next(
           new ForbiddenException('INVALID_HEADERS', { joiError: error  }),
