@@ -85,10 +85,5 @@
     "moduleNameMapper": {
       "@app/*": "<rootDir>/src/app/*"
     }
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm test"
-    }
   }
 }

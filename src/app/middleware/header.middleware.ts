@@ -1,27 +1,22 @@
 import { NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import i18n from 'i18n';
 import Joi from 'joi';
 
-import { ForbiddenException } from '@app/exceptions/httpException';
+import { ForbiddenException } from '@app/exceptions/http-exception';
 
 export class HeaderMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     Joi.object({
       'accept-language': Joi.any()
         .valid('en-EN', 'id-ID')
-        .required(),
     })
       .unknown()
       .validateAsync(req.headers)
       .then(() => {
-        i18n.setLocale(req.header('accept-language'))
-        next()
+        next();
       })
       .catch(error =>
-        next(
-          new ForbiddenException('INVALID_HEADERS', { joiError: error  }),
-        ),
+        next(new ForbiddenException('INVALID_HEADERS', { joiError: error })),
       );
   }
 }
