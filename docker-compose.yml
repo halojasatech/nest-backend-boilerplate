@@ -16,7 +16,7 @@ services:
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: teraswork_db
+      POSTGRES_DB: database
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
