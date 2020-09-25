@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { config } from 'dotenv';
+
+const pjson = require('../../../package.json')
 config();
 
 /*
@@ -13,6 +16,15 @@ config();
 */
 
 const appConfig = {
+
+  /**
+   * App Configuration
+   *
+  */
+  app: {
+    name: pjson.name,
+    version: pjson.version
+  },
   /**
    * Database Configuration
    * Please refer to https://docs.nestjs.com/techniques/database
@@ -27,6 +39,21 @@ const appConfig = {
     autoLoadModels: true,
     synchronize: true, // set true to sync based on models,
   },
+  /**
+   * ELK Stack Configuration
+   * Please refer to https://www.elastic.co/guide/index.html
+  */
+ elk: {
+   elasticsearch : {
+    host: process.env.ELASTICSEARCH_HOST,
+   },
+   apm: {
+     host: process.env.ELASTIC_APM_HOST,
+   },
+   logstash: {
+     host: process.env.ELASTIC_LOGSTASH_HOST
+   }
+ }
 };
 
 export default appConfig;

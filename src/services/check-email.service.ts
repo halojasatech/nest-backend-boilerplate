@@ -7,8 +7,11 @@ export class CheckEmailService {
   constructor(private sequelize: Sequelize) {}
   getHello(): any {
     // return 'hi'
-  throw new ForbiddenException('INVALID_HEADERS', { msg: 'HELLO_WORLD', str: {
-      name: 'MARCUS'
-    }})
+    throw new ForbiddenException('INVALID_HEADERS', {
+      msg: 'HELLO_WORLD',
+      str: {
+        name: 'MARCUS',
+      },
+    });
   }
 }
