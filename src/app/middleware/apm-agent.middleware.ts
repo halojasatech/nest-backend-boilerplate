@@ -4,17 +4,15 @@ import apm from 'elastic-apm-node';
 
 @Injectable()
 class APMAgent {
-  private _init: any;
-  constructor() {
-    this._init = apm.start({
-      serviceName: config.app.name,
-      serviceVersion: config.app.version,
-      serverUrl: config.elk.apm.host,
-    });
-  }
+  private readonly _init = apm.start({
+    serviceName: config.app.name,
+    serviceVersion: config.app.version,
+    serverUrl: config.elk.apm.host,
+    captureHeaders: true,
+  });
 
   public init() {
-    return this._init;
+    return this._init.middleware.connect();
   }
 }
 
