@@ -7,7 +7,7 @@ import Database from '@app/config/database';
  * Import Middleware
  */
 import { HeaderMiddleware } from '@app/middleware/header.middleware';
-import APMAgent from '@app/middleware/apm-agent.middleware';
+import apm from '@app/middleware/apm-agent.middleware';
 
 /**
  * Import Controllers
@@ -26,7 +26,7 @@ import { CheckEmailService } from './services/check-email.service';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(APMAgent.init());
+    consumer.apply(apm.init());
     consumer
       .apply((req, res, next) => {
         i18n.init(req, res, next);

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { config } from 'dotenv';
 
-const pjson = require('../../../package.json')
+const pjson = require('../../../package.json');
 config();
 
 /*
@@ -16,14 +16,13 @@ config();
 */
 
 const appConfig = {
-
   /**
    * App Configuration
    *
-  */
+   */
   app: {
     name: pjson.name,
-    version: pjson.version
+    version: pjson.version,
   },
   /**
    * Database Configuration
@@ -42,18 +41,18 @@ const appConfig = {
   /**
    * ELK Stack Configuration
    * Please refer to https://www.elastic.co/guide/index.html
-  */
- elk: {
-   elasticsearch : {
-    host: process.env.ELASTICSEARCH_HOST,
-   },
-   apm: {
-     host: process.env.ELASTIC_APM_HOST,
-   },
-   logstash: {
-     host: process.env.ELASTIC_LOGSTASH_HOST
-   }
- }
+   */
+  elk: {
+    elasticsearch: {
+      host: process.env.ELASTIC_SEARCH_HOST,
+    },
+    apm: {
+      host: process.env.ELASTIC_APM_HOST,
+    },
+    logstash: {
+      host: process.env.ELASTIC_LOGSTASH_HOST,
+    },
+  },
 };
 
 export default appConfig;
