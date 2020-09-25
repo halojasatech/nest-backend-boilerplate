@@ -1,9 +1,21 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-import { NestMiddleware } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import config from '@app/config/app';
+import apm from 'elastic-apm-node';
 
-export const APMAgent = require('elastic-apm-node').start({
-  serviceName: config.app.name,
-  serviceVersion: config.app.version,
-  serverUrl: config.elk.apm.host,
-});
+@Injectable()
+class APMAgent {
+  private _init: any;
+  constructor() {
+    this._init = apm.start({
+      serviceName: config.app.name,
+      serviceVersion: config.app.version,
+      serverUrl: config.elk.apm.host,
+    });
+  }
+
+  public init() {
+    return this._init;
+  }
+}
+
+export default new APMAgent();
