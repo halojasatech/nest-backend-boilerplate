@@ -12,6 +12,10 @@ export class CheckEmailService {
   getHello(): any {
     return {
       password: '1234',
+      asasasa: {
+        asasa: 1,
+        password: 'kadk',
+      },
     };
   }
 }

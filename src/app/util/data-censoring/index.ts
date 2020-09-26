@@ -11,16 +11,33 @@ class DataCensoring {
     const sample = JSON.parse(stringify);
 
     const elementToSearch = sensitiveKey.keys;
-    _.map(sample, (val, key) => {
+    _.mapKeys(sample, (val, key) => {
+      // find object key
       elementToSearch.find(element => {
         if (element == key) {
           sample[key] = '********';
           return sample;
         }
       });
+
+      // find nested object
+      if (typeof sample[key] === 'object') {
+        _.mapKeys(sample[key], (nestedVal, nestedValkey) => {
+          elementToSearch.find(element => {
+            if (element == nestedValkey) {
+              sample[key][nestedValkey] = '********';
+              return sample;
+            }
+          });
+        });
+      }
     });
+
+    // console.log(sample);
     return sample;
   }
+
+  public map() {}
 }
 
 export default new DataCensoring();

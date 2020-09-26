@@ -25,7 +25,5 @@ export const httpFormatLog = data => {
     },
     response: censor.do(data.meta.data.response),
   };
-
-  console.log(format);
   return format;
 };
