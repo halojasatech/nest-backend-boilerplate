@@ -1,4 +1,4 @@
-import { Controller, Post, UseInterceptors } from '@nestjs/common';
+import { Controller, Post, Request } from '@nestjs/common';
 import { CheckEmailService } from '../services/check-email.service';
 
 @Controller()
