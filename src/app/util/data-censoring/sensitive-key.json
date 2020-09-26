@@ -1,0 +1,11 @@
+{
+  "keys": [
+    "x-api-key",
+    "postman-token",
+    "x-action-token",
+    "password",
+    "accessToken",
+    "refreshToken",
+    "authorization"
+  ]
+}

@@ -39,7 +39,9 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
     "sequelize": "^6.1.1",
-    "sequelize-typescript": "^2.0.0-beta.0"
+    "sequelize-typescript": "^2.0.0-beta.0",
+    "winston": "^3.3.3",
+    "winston-elasticsearch": "^0.10.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
