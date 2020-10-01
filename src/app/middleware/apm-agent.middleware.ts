@@ -9,10 +9,16 @@ class APMAgent {
     serviceVersion: config.app.version,
     serverUrl: config.elk.apm.host,
     captureHeaders: true,
+    captureBody: 'all',
+    usePathAsTransactionName: true,
   });
 
   public init() {
     return this._init.middleware.connect();
+  }
+
+  public captureError(error) {
+    return this._init.captureError(error);
   }
 }
 
