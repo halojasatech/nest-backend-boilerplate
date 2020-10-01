@@ -76,6 +76,15 @@ services:
     ports:
       - 5601:5601
 
+  redis:
+    image: redis
+    container_name: redis_db
+    ports:
+      - '6379:6379'
+    command: ['redis-server', '--bind', 'redis', '--port', '6379']
+    networks:
+      - net
+
 volumes:
   postgres:
   elasticsearch:

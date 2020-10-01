@@ -53,6 +53,15 @@ const appConfig = {
       host: process.env.ELASTIC_LOGSTASH_HOST,
     },
   },
+
+  /**
+   * Redis Configuration
+   */
+  redis: {
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    auth_pass: process.env.REDIS_PASS
+  }
 };
 
 export default appConfig;
