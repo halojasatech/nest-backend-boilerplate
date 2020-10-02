@@ -1,5 +1,10 @@
 FROM gitpod/workspace-postgres
 
+# Set Postgres Credentials
+RUN    /etc/init.d/postgresql start &&\
+    psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD '123456';" &&\
+    createdb -O database database
+    
 # Install Node and Yarn
 ENV NODE_VERSION=12.18.3
 RUN bash -c ". .nvm/nvm.sh && \
