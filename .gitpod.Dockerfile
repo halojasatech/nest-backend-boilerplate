@@ -1,7 +1,7 @@
 FROM gitpod/workspace-postgres
 
 # Set Postgres Credentials
-RUN    /etc/init.d/postgresql start &&\
+RUN /etc/init.d/postgresql start &&\
     psql --command "CREATE USER postgres WITH SUPERUSER PASSWORD '123456';" &&\
     createdb -O database database
     
