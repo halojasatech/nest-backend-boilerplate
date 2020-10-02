@@ -15,7 +15,7 @@ export class CustomException extends HttpException {
   }
 }
 
-export class SuccessException extends HttpException {
+export class SuccessResponse extends HttpException {
   constructor(data: any) {
     super(!data.data ? data : data.data, HttpStatus.OK);
   }

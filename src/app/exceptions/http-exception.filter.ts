@@ -15,7 +15,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const response = ctx.getResponse();
     const request = ctx.getRequest();
     const traceId = request.header('traceId');
-
+    const result = exception.getResponse();
     const status = exception
       ? exception.getStatus()
       : HttpStatus.INTERNAL_SERVER_ERROR;
@@ -33,13 +33,16 @@ export class AllExceptionsFilter implements ExceptionFilter {
       response.status(status).json({
         status,
         traceId,
-        result: exception.getResponse(),
+        result,
       });
     } else {
       response.status(status).json({
         status,
         traceId,
-        errors: exception.getResponse(),
+        errors:
+          result['statusCode'] == 404
+            ? { flag: 'INVALID_URL', message: result['message'] }
+            : result,
       });
     }
   }
