@@ -1,6 +1,5 @@
 build:
 	docker:
-	  app: Dockerfile
-
-  
-  
+		app: Dockerfile
+	run:
+		app: npm run start:prod
