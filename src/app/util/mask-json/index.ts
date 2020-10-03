@@ -10,13 +10,9 @@ const replacement = '******';
 const maskJson = (values): any => {
   return cloneDeepWith(values, (value, key: string) => {
     // Strip matching keys.
-    if (some(collection, item => key === item)) {
-      return replacement;
-    }
+    if (some(collection, item => key === item)) return replacement
 
-    if (isObject(value)) {
-      return;
-    }
+    if (isObject(value)) return value
 
     return value;
   });

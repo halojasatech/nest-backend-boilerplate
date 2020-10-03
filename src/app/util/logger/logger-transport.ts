@@ -16,8 +16,7 @@ class LoggerTransport {
     transformer: logData => this.formatMessage(logData),
   }).on('warning', error => {
     console.log('Failed save log to ES');
-    const err = new Error(error);
-    apm.captureError(err);
+   throw new Error(error);
   });
 
   /**
