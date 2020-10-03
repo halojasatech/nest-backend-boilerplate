@@ -6,8 +6,14 @@ RUN apk update \
 	&& apk add wget curl \
 	&& apk add coreutils
 
+# Create workdir
+RUN mkdir /home/app
+
+# Set workdir to /app
+WORKDIR /home/app
+
 # Copy Package.json
-COPY package.json .
+COPY package.json /home/app
 
 # Install Package
 RUN npm i
@@ -15,7 +21,10 @@ RUN npm i
 # Copy all files ( except that listed in .dockerignore )
 COPY . .
 
-RUN ls -la
+# Build app
+RUN npm run build
+
+RUN ls -la ]
 
 EXPOSE 3000:3000
 
