@@ -2,7 +2,7 @@
   <a href="https://halojasa.com/" target="blank"><img src="https://i.postimg.cc/pLsLhWWn/HJ-Halojasa-nest.png" width="320" alt="Halojasa Logo with Nestjs" /></a>
 </p>
 
-  <p align="center">This is <a href="https://halojasa.com" target="blank">Halojasa</a> backend framework for building efficient and scalable microservice applications based on <a href="https://nestjs.com" target="blank">Nestjs</a>.</p>
+  <p align="center">This is <a href="https://halojasa.com" target="blank">Halojasa</a> ready production use backend boilerplate for building efficient and scalable microservice applications build with <a href="https://nestjs.com" target="blank">Nestjs</a>.</p>
 
 ## Description
 
