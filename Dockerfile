@@ -7,7 +7,7 @@ RUN apk update \
 	&& apk add coreutils
 
 # Create workdir
-RUN mkdir /APP
+RUN mkdir /app
 
 # Set workdir to /app
 WORKDIR /app
@@ -20,6 +20,8 @@ RUN npm i
 
 # Copy all files ( except that listed in .dockerignore )
 COPY . .
+
+RUN ls -la
 
 EXPOSE 3000:3000
 
