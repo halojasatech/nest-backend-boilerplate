@@ -21,8 +21,6 @@ RUN npm i
 # Copy all files ( except that listed in .dockerignore )
 COPY . .
 
-RUN ls -la
-
 EXPOSE 3000:3000
 
 CMD [ "npm" , "run" , "start:prod"]
