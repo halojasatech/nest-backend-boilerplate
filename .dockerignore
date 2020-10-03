@@ -8,13 +8,10 @@ coverage
 docker-compose.yml
 jest.config.js
 README.md
-tslint.json
-tsconfig.json
 jest.setup.js
 .gitignore
 src
 script
-tsconfig.build.json
 nest-cli.json
 heroku.yml
 Dockerfile
