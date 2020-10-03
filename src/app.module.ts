@@ -15,12 +15,12 @@ import apm from '@app/middleware/apm-agent.middleware';
 /**
  * Import Controllers
  */
-import { AuthController } from './controllers/check-email.controller';
+import { AuthController } from './controllers/sample';
 
 /**
  * Import Services
  */
-import { CheckEmailService } from './services/check-email.service';
+import { SampleService } from './services/sample.service';
 
 @Module({
   imports: [Database],
@@ -30,7 +30,7 @@ import { CheckEmailService } from './services/check-email.service';
       provide: APP_FILTER,
       useClass: AllExceptionsFilter,
     },
-    CheckEmailService,
+    SampleService,
   ],
 })
 export class AppModule {
