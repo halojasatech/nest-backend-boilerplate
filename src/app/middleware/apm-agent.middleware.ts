@@ -16,10 +16,6 @@ class APMAgent {
   public init() {
     return this._init.middleware.connect();
   }
-
-  public captureError(error) {
-    return this._init.captureError(error);
-  }
 }
 
 export default new APMAgent();
