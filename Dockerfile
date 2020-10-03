@@ -6,14 +6,8 @@ RUN apk update \
 	&& apk add wget curl \
 	&& apk add coreutils
 
-# Create workdir
-RUN mkdir /home/app
-
-# Set workdir to /app
-WORKDIR /home/app
-
 # Copy Package.json
-COPY package.json /home/app
+COPY package.json .
 
 # Install Package
 RUN npm i
