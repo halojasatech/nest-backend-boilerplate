@@ -2,4 +2,4 @@ build:
 	docker:
 	  web: Dockerfile
 	run:
-	  web: npm run start:debug
+	  web: npm run start
