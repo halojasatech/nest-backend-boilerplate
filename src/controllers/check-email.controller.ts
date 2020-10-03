@@ -1,6 +1,5 @@
 import { Controller, Post, Request } from '@nestjs/common';
 import { CheckEmailService } from '../services/check-email.service';
-
 @Controller()
 export class AuthController {
   constructor(private readonly checkEmailService: CheckEmailService) {}
