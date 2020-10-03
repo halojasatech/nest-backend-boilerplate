@@ -7,13 +7,13 @@ RUN apk update \
 	&& apk add coreutils
 
 # Create workdir
-RUN mkdir /app
+RUN mkdir /home/app
 
 # Set workdir to /app
-WORKDIR /app
+WORKDIR /home/app
 
 # Copy Package.json
-COPY package.json ./app
+COPY package.json /home/app
 
 # Install Package
 RUN npm i
