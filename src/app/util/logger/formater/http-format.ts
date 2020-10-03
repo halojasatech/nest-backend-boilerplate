@@ -1,5 +1,5 @@
 import maskJson from '@app/util/mask-json';
-import _ from 'lodash';
+import _, { isObject } from 'lodash';
 
 interface IHttpFormat {
   '@timestamp': Date;
@@ -24,7 +24,7 @@ const httpFormatLog = data => {
       language: data.meta.data.request.language,
       headers: meta.request.headers,
     },
-    response: meta.response,
+    response: isObject(meta.response) ? meta.response : {data: meta.response},
   };
   return format;
 };

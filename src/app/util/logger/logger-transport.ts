@@ -4,7 +4,7 @@ import config from '@app/config/app';
 import { ElasticsearchTransport } from 'winston-elasticsearch';
 import httpFormatLog from './formater/http-format';
 import defaultFormatLog from './formater/default-format';
-import apm from '@app/middleware/apm-agent.middleware';
+import apm from 'elastic-apm-node';
 
 class LoggerTransport {
   /**
@@ -15,8 +15,7 @@ class LoggerTransport {
     clientOpts: { nodes: config.elk.elasticsearch.host },
     transformer: logData => this.formatMessage(logData),
   }).on('warning', error => {
-    console.log('Failed save log to ES');
-    throw new Error(error);
+    apm.captureError(error)
   });
 
   /**

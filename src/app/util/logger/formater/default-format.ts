@@ -1,7 +1,7 @@
 import maskJson from '@app/util/mask-json';
 import _ from 'lodash';
 
-interface IHttpFormat {
+interface IDefaultFormat {
   '@timestamp': Date;
   indexInterfix: string;
   severity: string;
@@ -11,7 +11,7 @@ interface IHttpFormat {
 
 const defaultFormatLog = data => {
   const meta = maskJson(data.meta);
-  const format: IHttpFormat = {
+  const format: IDefaultFormat = {
     '@timestamp': new Date(),
     indexInterfix: 'app-log',
     severity: data.level,
