@@ -10,7 +10,7 @@ RUN apk update \
 WORKDIR /app
 
 # Copy Package.json
-COPY package.json ./
+COPY package*.json ./
 
 # Install Package
 RUN npm i
@@ -21,8 +21,6 @@ COPY . .
 # Build app
 RUN npm run build
 
-RUN ls -la
-
 EXPOSE 3000:3000
 
-CMD [ "npm" , "run" , "start:prod"]
+CMD ["node", "dist/main"]
