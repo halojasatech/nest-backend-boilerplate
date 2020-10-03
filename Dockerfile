@@ -24,7 +24,7 @@ COPY . .
 # Build app
 RUN npm run build
 
-RUN ls -la
+RUN ls -la /home/app
 
 EXPOSE 3000:3000
 
