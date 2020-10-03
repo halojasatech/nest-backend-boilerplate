@@ -6,6 +6,9 @@ RUN apk update \
 	&& apk add wget curl \
 	&& apk add coreutils
 
+# Create workdir
+RUN mkdir /APP
+
 # Set workdir to /app
 WORKDIR /app
 

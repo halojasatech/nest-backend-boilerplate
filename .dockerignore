@@ -15,3 +15,14 @@ jest.setup.js
 .gitignore
 src
 script
+tsconfig.build.json
+nest-cli.json
+heroku.yml
+Dockerfile
+.prettierrc
+.gitpod.yml
+.gitpod.Dockerfile
+.eslintrc.js
+.env.example
+.editorconfig
+.dockerignore
