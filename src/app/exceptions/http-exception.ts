@@ -1,40 +1,23 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 import locales from '@app/i18n/translation';
-import log from '@app/util/logger';
 
 export class CustomException extends HttpException {
   constructor(httpCode: number, flag: string, message: any) {
     super(
       {
-        status: httpCode,
-        errors: {
-          flag: flag,
-          ...(message.joiError
-            ? { details: message.joiError.details }
-            : { message: locales(message.msg, message.str) }),
-        },
+        flag: flag,
+        ...(message.joiError
+          ? { details: message.joiError.details }
+          : { message: locales(message.msg, message.str) }),
       },
       httpCode,
     );
   }
 }
 
-export class SuccessException extends HttpException {
-  constructor(request: any, data: any) {
-    super(
-      {
-        status: !data.httpCode ? HttpStatus.OK : data.httpCode,
-        result: !data.data ? data : data.data,
-      },
-      data.httpCode,
-    );
-
-    log.httpLog('INCOMING_HTTP_REQUEST', {
-      data: {
-        request,
-        response: super.getResponse(),
-      },
-    });
+export class SuccessResponse extends HttpException {
+  constructor(data: any) {
+    super(!data.data ? data : data.data, HttpStatus.OK);
   }
 }
 

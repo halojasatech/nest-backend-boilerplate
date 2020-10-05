@@ -1,5 +1,5 @@
-import censor from '@app/util/data-censoring';
-import _ from 'lodash';
+import maskJson from '@app/util/mask-json';
+import _, { isObject } from 'lodash';
 
 interface IHttpFormat {
   '@timestamp': Date;
@@ -13,17 +13,20 @@ interface IHttpFormat {
   response: object;
 }
 
-export const httpFormatLog = data => {
+const httpFormatLog = data => {
+  const meta = maskJson(data.meta.data);
   const format: IHttpFormat = {
     '@timestamp': new Date(),
-    indexInterfix: 'http',
+    indexInterfix: 'http-log',
     severity: data.level,
     message: data.message,
     request: {
       language: data.meta.data.request.language,
-      headers: censor.do(data.meta.data.request.headers),
+      headers: meta.request.headers,
     },
-    response: censor.do(data.meta.data.response),
+    response: isObject(meta.response) ? meta.response : {data: meta.response},
   };
   return format;
 };
+
+export default httpFormatLog;

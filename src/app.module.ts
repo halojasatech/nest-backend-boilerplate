@@ -1,5 +1,8 @@
 import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import i18n from 'i18n';
+import { APP_FILTER } from '@nestjs/core';
+
+import { AllExceptionsFilter } from '@app/exceptions/http-exception.filter';
 
 import Database from '@app/config/database';
 
@@ -12,17 +15,23 @@ import apm from '@app/middleware/apm-agent.middleware';
 /**
  * Import Controllers
  */
-import { AuthController } from './controllers/check-email.controller';
+import { AuthController } from './controllers/sample';
 
 /**
  * Import Services
  */
-import { CheckEmailService } from './services/check-email.service';
+import { SampleService } from './services/sample.service';
 
 @Module({
   imports: [Database],
   controllers: [AuthController],
-  providers: [CheckEmailService],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter,
+    },
+    SampleService,
+  ],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
@@ -33,7 +42,6 @@ export class AppModule {
         i18n.setLocale(req.language);
       })
       .forRoutes({ path: '*', method: RequestMethod.ALL });
-
     consumer
       .apply(HeaderMiddleware)
       .forRoutes({ path: '*', method: RequestMethod.ALL });

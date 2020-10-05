@@ -2,20 +2,27 @@ import winston from 'winston';
 import config from '@app/config/app';
 
 import { ElasticsearchTransport } from 'winston-elasticsearch';
-import { httpFormatLog } from './formater/http-format';
+import httpFormatLog from './formater/http-format';
+import defaultFormatLog from './formater/default-format';
+import apm from 'elastic-apm-node';
 
 class LoggerTransport {
   /**
    * Winston Logger Transport Configuration
    */
+  private elasticTransport = new ElasticsearchTransport({
+    level: 'info',
+    clientOpts: { nodes: config.elk.elasticsearch.host },
+    transformer: logData => this.formatMessage(logData),
+  }).on('warning', error => {
+    apm.captureError(error)
+  });
+
+  /**
+   * Create Winston Logger
+   */
   private logger = winston.createLogger({
-    transports: [
-      new ElasticsearchTransport({
-        level: 'info',
-        clientOpts: { nodes: config.elk.elasticsearch.host },
-        transformer: logData => this.formatMessage(logData),
-      }),
-    ],
+    transports: [this.elasticTransport],
   });
 
   /**
@@ -33,6 +40,9 @@ class LoggerTransport {
     if (data.message == 'INCOMING_HTTP_REQUEST') {
       return httpFormatLog(data);
     }
+
+    // log with default format
+    return defaultFormatLog(data);
   }
 }
 

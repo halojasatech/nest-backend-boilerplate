@@ -8,8 +8,16 @@ class Logger {
     });
   }
 
-  public info(message: string, data: any) {
+  public info(message: string, data: object) {
     logger.info(message, data);
+  }
+
+  public warn(message: string, data: object) {
+    logger.warn(message, data);
+  }
+
+  public error(message: string, data: object) {
+    logger.error(message, data);
   }
 }
 
