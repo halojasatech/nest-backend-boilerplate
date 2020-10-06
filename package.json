@@ -17,7 +17,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./__test__/jest-e2e.json",
+    "test:e2e": "jest --config ./src/__test__/jest-e2e.json",
     "commit": "npx git-cz",
     "release:minor": "npx standard-version -- --release-as minor",
     "release:major": "npx standard-version -- --release-as major"
@@ -82,11 +82,10 @@
     "coverageDirectory": "./coverage",
     "testEnvironment": "node",
     "roots": [
-      "<rootDir>/src/",
-      "<rootDir>/src/app/"
+      "<rootDir>/src/"
     ],
     "moduleNameMapper": {
-      "@app/*": "<rootDir>/src/app/*"
+      "@app/(.*)": "<rootDir>/src/app/$1"
     }
   }
 }

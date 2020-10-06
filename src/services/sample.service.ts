@@ -6,6 +6,6 @@ import { Request } from 'express';
 export class SampleService {
   constructor(@Inject(REQUEST) private request: Request) {}
   getHello(): any {
-    return 'Hello World'
+    return 'Hello World!'
   }
 }
