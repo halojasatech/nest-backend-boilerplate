@@ -26,10 +26,7 @@ import { SampleService } from './services/sample.service';
   imports: [Database],
   controllers: [AuthController],
   providers: [
-    {
-      provide: APP_FILTER,
-      useClass: AllExceptionsFilter,
-    },
+    { provide: APP_FILTER, useClass: AllExceptionsFilter },
     SampleService,
   ],
 })

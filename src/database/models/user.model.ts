@@ -1,10 +1,17 @@
-import { Column, Model, Table, CreatedAt, UpdatedAt, DeletedAt, DataType } from 'sequelize-typescript';
+import {
+  Column,
+  Model,
+  Table,
+  CreatedAt,
+  UpdatedAt,
+  DeletedAt,
+  DataType,
+} from 'sequelize-typescript';
 
 @Table
 export class User extends Model<User> {
-
   @Column({
-    type: DataType.STRING(10)
+    type: DataType.STRING(10),
   })
   userId: string;
 
@@ -18,7 +25,7 @@ export class User extends Model<User> {
   email: string;
 
   @Column({
-    type: DataType.STRING(60)
+    type: DataType.STRING(60),
   })
   password: string;
 
@@ -27,7 +34,7 @@ export class User extends Model<User> {
 
   @CreatedAt
   createdAt: Date;
- 
+
   @UpdatedAt
   updatedAt: Date;
 
