@@ -1,9 +1,8 @@
 import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
-import i18n from 'i18n';
 import { APP_FILTER } from '@nestjs/core';
+import i18n from 'i18n';
 
 import { AllExceptionsFilter } from '@app/exceptions/http-exception.filter';
-
 import Database from '@app/config/database';
 
 /**
