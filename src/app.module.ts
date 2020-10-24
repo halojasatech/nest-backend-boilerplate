@@ -3,7 +3,7 @@ import { APP_FILTER } from '@nestjs/core';
 import i18n from 'i18n';
 
 import { AllExceptionsFilter } from '@app/exceptions/http-exception.filter';
-import Database from '@database/connect';
+import Database from '@database/index';
 
 /**
  * Import Middleware
@@ -24,14 +24,11 @@ import { SampleService } from './services/sample.service';
 @Module({
   imports: [Database],
   controllers: [AuthController],
-  providers: [
-    {
-      provide: APP_FILTER,
-      useClass: AllExceptionsFilter,
-    },
+  providers: [{ provide: APP_FILTER, useClass: AllExceptionsFilter},
     SampleService,
   ],
 })
+
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(apm.init());

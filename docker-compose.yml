@@ -16,7 +16,7 @@ services:
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: database
+      POSTGRES_DB: sampledb
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:

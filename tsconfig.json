@@ -10,12 +10,16 @@
     "target": "es6",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "incremental": true,
+    "lib": ["es2015", "es2016"],
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@global/helpers/*": ["src/helpers/*"],
-      "@database/*": ["src/database/*"]
-    }
+      "@app/*": ["./app/*"],
+      "@global/helpers/*": ["./helpers/*"],
+      "@database/*": ["./database/*"]
+    },
+    "plugins": [
+      { "transform": "@zerollup/ts-transform-paths" }
+    ]
   }
 }

@@ -1,0 +1,61 @@
+@startuml
+' uncomment the line below if you're using computer with a retina display
+skinparam dpi 300
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+' we use bold for primary key
+' green color for unique
+' and underscore for not_null
+!define primary_key(x) <b>x</b>
+!define unique(x) <color:green>x</color>
+!define not_null(x) <u>x</u>
+' other tags available:
+' <i></i>
+' <back:COLOR></color>, where color is a color name or html color code
+' (#FFAACC)
+hide methods
+hide stereotypes
+
+' entities
+Table(userAuthentication, "userAuthentication\n Main user authentication table") {
+	primary_key(id) INT 
+	not_null(unique(userCode)) VARCHAR[36]
+	not_null(email) VARCHAR[255]
+	oauthEmail VARCHAR[255] 
+	oauthProvider VARCHAR[10]
+	oauthId VARCHAR[255]
+	not_null(isActive) NUMBER
+	not_null(createdAt) DATETIME
+	updatedAt DATETIME
+	deletedAt DATETIME
+}
+
+Table(userData, "userData\n Main user data table"){
+	primary_key(id) INT 
+	not_null(unique(userId)) INT
+	firstName VARCHAR[255]
+	lastName VARCHAR[255]
+	displayName VARCHAR[255]
+	phoneNumber INT[50]
+	photo VARCHAR[255]
+	about [VARCHAR 100]
+	jobRole VARCHAR[36]
+	localTime VARCHAR[36]
+	not_null(createdAt) DATETIME
+	updatedAt DATETIME
+	deletedAt DATETIME
+}
+
+Table(emailVerification, "emailVerification\n Email verification token"){
+	primary_key(id) INT
+	not_null(unique(userCode)) VARCHAR[36]
+	not_null(unique(token)) VARCHAR[255]
+	not_null(code) VARCHAR[255]
+	not_null(email) VARCHAR[255]
+	not_null(userAgent) VARCHAR[255]
+	not_null(expiration) DATETIME
+	not_null(createdAt) DATETIME
+	updatedAt DATETIME
+	deletedAt DATETIME
+}
+
+@enduml
