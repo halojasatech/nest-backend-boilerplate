@@ -29,7 +29,6 @@
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/sequelize": "^0.1.1",
-    "@nestjs/typeorm": "^7.1.4",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
@@ -44,7 +43,6 @@
     "rxjs": "^6.5.4",
     "sequelize": "^6.1.1",
     "sequelize-typescript": "^2.0.0-beta.0",
-    "typeorm": "^0.2.28",
     "uuid": "^8.3.1",
     "winston": "^3.3.3",
     "winston-elasticsearch": "^0.10.0"
