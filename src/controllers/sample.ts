@@ -6,6 +6,6 @@ export class AuthController {
   constructor(private readonly sampleService: SampleService) {}
   @Get('/')
   getHello(): string {
-    return this.sampleService.getHello();
+    return this.sampleService.checkEmailStatus();
   }
 }
